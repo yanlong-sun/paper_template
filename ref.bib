@@ -1,0 +1,112 @@
+@InProceedings{DALS,
+author="Hatamizadeh, Ali
+and Hoogi, Assaf
+and Sengupta, Debleena
+and Lu, Wuyue
+and Wilcox, Brian
+and Rubin, Daniel
+and Terzopoulos, Demetri",
+editor="Suk, Heung-Il
+and Liu, Mingxia
+and Yan, Pingkun
+and Lian, Chunfeng",
+title="Deep Active Lesion Segmentation",
+booktitle="Machine Learning in Medical Imaging",
+year="2019",
+publisher="Springer International Publishing",
+address="Cham",
+pages="98--105",
+abstract="Lesion segmentation is an important problem in computer-assisted diagnosis that remains challenging due to the prevalence of low contrast, irregular boundaries that are unamenable to shape priors. We introduce Deep Active Lesion Segmentation (DALS), a fully automated segmentation framework that leverages the powerful nonlinear feature extraction abilities of fully Convolutional Neural Networks (CNNs) and the precise boundary delineation abilities of Active Contour Models (ACMs). Our DALS framework benefits from an improved level-set ACM formulation with a per-pixel-parameterized energy functional and a novel multiscale encoder-decoder CNN that learns an initialization probability map along with parameter maps for the ACM. We evaluate our lesion segmentation model on a new Multiorgan Lesion Segmentation (MLS) dataset that contains images of various organs, including brain, liver, and lung, across different imaging modalities---MR and CT. Our results demonstrate favorable performance compared to competing methods, especially for small training datasets.",
+isbn="978-3-030-32692-0"
+}
+
+
+@article{ACM1,
+  title={Algorithms for finding global minimizers of image segmentation and denoising models},
+  author={Chan, Tony F and Esedoglu, Selim and Nikolova, Mila},
+  journal={SIAM journal on applied mathematics},
+  volume={66},
+  number={5},
+  pages={1632--1648},
+  year={2006},
+  publisher={SIAM}
+}
+
+@ARTICLE{ACM2,  author={Chan, T.F. and Vese, L.A.},  journal={IEEE Transactions on Image Processing},   title={Active contours without edges},   year={2001},  volume={10},  number={2},  pages={266-277},  doi={10.1109/83.902291}}
+
+
+@ARTICLE{ACM3,
+    author = {Michael Kass and Andrew Witkin and Demetri Terzopoulos},
+    title = {Snakes: Active contour models},
+    journal = {INTERNATIONAL JOURNAL OF COMPUTER VISION},
+    year = {1988},
+    volume = {1},
+    number = {4},
+    pages = {321--331}
+}
+
+@InProceedings{DACN,
+author="Zhang, Mo
+and Dong, Bin
+and Li, Quanzheng",
+editor="Martel, Anne L.
+and Abolmaesumi, Purang
+and Stoyanov, Danail
+and Mateus, Diana
+and Zuluaga, Maria A.
+and Zhou, S. Kevin
+and Racoceanu, Daniel
+and Joskowicz, Leo",
+title="Deep Active Contour Network for Medical Image Segmentation",
+booktitle="Medical Image Computing and Computer Assisted Intervention -- MICCAI 2020",
+year="2020",
+publisher="Springer International Publishing",
+address="Cham",
+pages="321--331",
+abstract="Image segmentation is vital to medical image analysis and clinical diagnosis. Recently, convolutional neural networks (CNNs) have achieved tremendous success in this task, however, it performs poorly at recognizing precise object boundary due to the information loss in the successive downsampling layers. To overcome this problem, we integrate an active contour model (convexified Chan-Vese model) into the CNN structure (DenseUNet), forming a new framework called deep active contour network (DACN). Instead of manual setting, DACN applies a CNN backbone to learn the initialization and parameters of active contour model (ACM) automatically. The proposed DACN leverages the advantage of ACM to detect object boundaries accurately, which can be trained in an end-to-end differential manner. The experimental results on two public datasets demonstrate the effectiveness of DACN, and the trimap experiment confirms the superior ability of DACN to obtain precise boundary delineation.",
+isbn="978-3-030-59719-1"
+}
+
+
+
+@misc{denseunet,
+      title={H-DenseUNet: Hybrid Densely Connected UNet for Liver and Tumor Segmentation from CT Volumes}, 
+      author={Xiaomeng Li and Hao Chen and Xiaojuan Qi and Qi Dou and Chi-Wing Fu and Pheng Ann Heng},
+      year={2018},
+      eprint={1709.07330},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+
+
+@INPROCEEDINGS{deseblock,  author={Huang, Gao and Liu, Zhuang and Van Der Maaten, Laurens and Weinberger, Kilian Q.},  booktitle={2017 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},   title={Densely Connected Convolutional Networks},   year={2017},  volume={},  number={},  pages={2261-2269},  doi={10.1109/CVPR.2017.243}}
+
+@Inbook{CC359,
+author="Mitchell, H. B.",
+title="STAPLE: Simultaneous Truth and Performance Level Estimation",
+bookTitle="Image Fusion: Theories, Techniques and Applications",
+year="2010",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="233--236",
+abstract="The subject of this chapter is the STAPLE (Simultaneous Truth and Performance Level Estimation) algorithm. This is a method for fusing together several segmented images and is based on the expectation-maximization (EM) algorithm.",
+isbn="978-3-642-11216-4",
+doi="10.1007/978-3-642-11216-4_21",
+url="https://doi.org/10.1007/978-3-642-11216-4_21"
+}
+
+
+@inproceedings{BrainSuite,
+author = {Gautham Rajagopal and Anand A. Joshi and Richard M. Leahy},
+title = {{An algorithm for automatic parameter adjustment for brain extraction in BrainSuite}},
+volume = {10133},
+booktitle = {Medical Imaging 2017: Image Processing},
+editor = {Martin A. Styner and Elsa D. Angelini},
+organization = {International Society for Optics and Photonics},
+publisher = {SPIE},
+pages = {150 -- 159},
+keywords = {Brain Extraction, BrainSuite, parameter tuning algorithm, MRI, Brain Segmentation},
+year = {2017},
+doi = {},
+URL = {https://doi.org/10.1117/12.2254631}
+}

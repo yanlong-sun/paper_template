@@ -1,0 +1,96 @@
+\documentclass[]{spie}
+\usepackage{float}
+%\usepackage{sbc-template}
+\usepackage{graphicx,url}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+%\usepackage{subcaption}
+%\usepackage[labelfont=bf,textfont=md, skip=5pt]{caption}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+%\usepackage[latin1]{inputenc}
+\usepackage{caption}
+%\captionsetup[table]{skip=10pt}
+
+\sloppy
+
+\title{Brain MRI Skull Stripping using Deep Active Contour Network}
+
+
+\author[a]{Yanlong Sun}
+\author[a]{Anand A. Joshi}
+
+\affil[a]{University of Southern California, Los Angeles, USA}
+
+
+\begin{document} 
+
+\maketitle
+
+\begin{abstract}
+  Brain segmentation, also known as skull-stripping is an important and challenging preprocessing step in brain image analysis group studies. Performing precise delineation of brain from surrounding skull and tissue organs is challenging using traditional CNN since the successive downsampling layers can cause the loss of information. In order to overcome this problem in deep neural networks and yet to take advantage of CNN's better performance compared to traditional model based methods for the skull striping task, we used a Deep Active Contour Network (DACN), which integrates an active contour model (convexified Chan-Vase model) into the CNN structure. We compared the performance of DACN to the UNet, DenseUnet, and BrainSuite using dice coefficient. We observed an improvement in the performance of the segmentation using the DACN model compared to the other methods.
+\end{abstract}
+
+\keywords{Skull Stripping, Active Contour Model, Convolutional Neural Network}
+
+\section{DESCRIPTION OF PURPOSE}
+The convolutional neural networks (CNNs) have been widely used for various segmentation tasks due to its powerful capabilities to learn informative features. However, it also has been proven that CNNs have limitations in terms of precision of delineation of the boundary due to downsampling and upsampling layers that cause loss of information \cite{DALS}. On the other hand, the models based on partial differential equations such as Active contour models \cite{ACM1,ACM2,ACM3} (ACMS), can perform precise delineation of the object boundary in segmentation tasks but are much slower and need a very good initialization to perform well. The deep active contour models (DACN) use a neural network backbone to initialize and combine CNN and ACM cost functions to overcome this challenge. In this work, we employ the DACN \cite{DACN} to perform a precise delineation of brain boundary for skull-stripping task.
+Hatamizadeh et al.\cite{DALS} presented an architecture named DALS, which also combined CNN and ACMs, but ACM of DALS only works as a post-processing step. Instead of combining these two methods in a successive order, DACN combines these two methods as a whole, to be an end-to-end network. Both the pixel-wise parameter maps and the initial contours of the ACM can be learned from data by CNN. 
+
+
+\section{Methodology} \label{sec:firstpage}
+
+As shown in Figure \ref{fig:network}, the DACN architecture integrates the ACM with a CNN backbone (DenseUNet \cite{denseunet}) into an end-to-end network. Figure \ref{fig:DenseUNet} illustrates the structure of the DenseUNet. The DenseUNet integrates the DenseBlock \cite{deseblock} into the classic UNet, which can enhance the feature propagation and alleviate gradient vanishing.
+
+The DACN \cite{DACN} can be illustrated as follows:
+
+\begin{itemize}
+  \item [1)] 
+  The parameter maps and initial contours of ACM are produced by the CNN backbone.
+  \item [2)]
+  The ACM module can fit a curve of the brain boundary according to the raw image, parameter maps and initial contours.
+  \item [3)]
+  Compare the outputs of the ACM module with the ground truth, a cross-entropy loss function will be produced. Meanwhile, the initial contours produced by the CNN backbone can also produce a loss function. Finally, the final loss would be the linear combination of these two losses.
+\end{itemize}
+
+\section{RESULTS}
+After training the network with CC-359 dataset \cite{CC359}, we compared the segmentation results for DACN, BrainSuite \cite{BrainSuite}, the baseline DenseUNet and the widely used UNet using  12 manually delineated subjects. As shown in Figure \ref{fig:compare}, the DACN outperforms all the other models. Compared to the baseline DenseUNet, DACN yields a higher dice coefficient with an improvement (2.3\%). Figure \ref{fig:compare_samples} shows 2 samples of the masks and the results of the DACN, BrainSuite and the DenseUNet, respectively. We can see from the figure that DACN produces better results and delineates the delicate boundaries of the brain.
+
+
+\section{FIGURES AND TABLES}
+
+\begin{figure}[H]
+\centering
+  \includegraphics[width=0.9\textwidth]{DACN-network.png}
+  \caption{The architecture of DACN}
+  \label{fig:network}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+  \includegraphics[width=0.9\textwidth]{DenseUNet.png}
+  \caption{The structure of the DenseUNet}
+  \label{fig:DenseUNet}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+  \includegraphics[width=0.7\textwidth]{result_final.png}
+  \caption{Quantitative analysis of different methods}
+  \label{fig:compare}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+  \includegraphics[width=0.6\textwidth]{compare_samples.png}
+  \caption{Sample results of different methods}
+  \label{fig:compare_samples}
+\end{figure}
+
+
+\bibliography{ref} 
+\bibliographystyle{spiebib} % makes bibtex use spiebib.bst
+
+\end{document}
